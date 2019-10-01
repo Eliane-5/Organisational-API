@@ -31,5 +31,13 @@ public class App {
             newUser.save();
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+//      show all users in the db
+        get("/allUsers", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Users> users = Users.all();
+            model.put("user", users);
+            return new ModelAndView(model, "allUsers.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
