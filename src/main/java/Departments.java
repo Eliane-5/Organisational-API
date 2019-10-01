@@ -53,4 +53,20 @@ public class Departments {
             return department;
         }
     }
+    public List<Users> getUsers() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM users where department=:dName";
+            return con.createQuery(sql)
+                    .addParameter("dName", this.dName)
+                    .executeAndFetch(Users.class);
+        }
+    }
+    public List<News> getNews() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM news where dName=:dName";
+            return con.createQuery(sql)
+                    .addParameter("dName", this.dName)
+                    .executeAndFetch(News.class);
+        }
+    }
 }
