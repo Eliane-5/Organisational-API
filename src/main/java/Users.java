@@ -9,4 +9,20 @@ public class Users {
         this.position = position;
         this.department = department;
     }
+
+    public String getFName() {
+        return fName;
+    }
+
+    public String getSName() {
+        return sName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
 }

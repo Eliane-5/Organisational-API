@@ -7,4 +7,16 @@ public class News {
         this.content = content;
         this.dName = dName;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getdName() {
+        return dName;
+    }
 }

@@ -7,4 +7,16 @@ public class Departments {
         this.description = description;
         this.employeeNo = employeeNo;
     }
+
+    public String getdName() {
+        return dName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getEmployeeNo() {
+        return employeeNo;
+    }
 }
