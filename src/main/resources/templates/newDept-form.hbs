@@ -1,0 +1,21 @@
+{{#partial "content"}}
+    <h3>Add a new Department!</h3>
+        <form action="/dept/new" method="post">
+            <div class="form-group">
+                <label for="dName">Department name:</label><br>
+                <input id="dName" name="dName" type="text"><br>
+            </div>
+            <div class="form-group">
+                <label for="description"> Description:</label><br>
+                <textarea id="description" name="description" type="text" rows="3"></textarea><br>
+            </div>
+            <div class="form-group">
+                <label for="employeeNo">Employee number:</label><br>
+                <input id="employeeNo" name="employeeNo" type="number"><br>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">ADD</button>
+            </div>
+        </form>
+{{/partial}}
+{{> layout.hbs}}
