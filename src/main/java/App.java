@@ -61,5 +61,27 @@ public class App {
             model.put("departments", departments);
             return new ModelAndView(model, "allDepts.hbs");
         }, new HandlebarsTemplateEngine());
+//        form for general news posting
+        get("/generalNews/new", (req,res)->{
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "generalNews-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/generalNews/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String title = request.queryParams("title");
+            String content = request.queryParams("content");
+            String dName = request.queryParams("dName");
+            GeneralNews generalNews = new GeneralNews(title,content,dName);
+            model.put("generalNews", generalNews);
+            generalNews.save();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+//        show all general news
+        get("/allGNews", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<GeneralNews> generalNews = GeneralNews.all();
+            model.put("generalNews", generalNews);
+            return new ModelAndView(model, "allGNews.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
