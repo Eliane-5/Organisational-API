@@ -1,3 +1,5 @@
+import org.sql2o.*;
+
 public class Departments {
     private String dName;
     private String description;
@@ -8,7 +10,7 @@ public class Departments {
         this.employeeNo = employeeNo;
     }
 
-    public String getdName() {
+    public String getDName() {
         return dName;
     }
 
@@ -18,5 +20,15 @@ public class Departments {
 
     public int getEmployeeNo() {
         return employeeNo;
+    }
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO departments (dName, description, employeeNo) VALUES (:dName, :description, :employeeNo)";
+            con.createQuery(sql)
+                    .addParameter("dName", this.dName)
+                    .addParameter("description", this.description)
+                    .addParameter("employeeNo", this.employeeNo)
+                    .executeUpdate();
+        }
     }
 }

@@ -1,3 +1,5 @@
+import org.sql2o.*;
+
 public class Users {
     private String fName;
     private String sName;
@@ -24,5 +26,16 @@ public class Users {
 
     public String getDepartment() {
         return department;
+    }
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO users (fName, sName, position, department) VALUES (:fName, :sName, :position, :department)";
+            con.createQuery(sql)
+                    .addParameter("fName", this.fName)
+                    .addParameter("sName", this.sName)
+                    .addParameter("position", this.position)
+                    .addParameter("department", this.department)
+                    .executeUpdate();
+        }
     }
 }

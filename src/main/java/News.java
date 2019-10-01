@@ -1,3 +1,5 @@
+import org.sql2o.*;
+
 public class News {
     private String title;
     private String content;
@@ -16,7 +18,17 @@ public class News {
         return content;
     }
 
-    public String getdName() {
+    public String getDName() {
         return dName;
+    }
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO news (title, content,dName) VALUES (:title, :content, :dName)";
+            con.createQuery(sql)
+                    .addParameter("title", this.title)
+                    .addParameter("content", this.content)
+                    .addParameter("dName", this.dName)
+                    .executeUpdate();
+        }
     }
 }
