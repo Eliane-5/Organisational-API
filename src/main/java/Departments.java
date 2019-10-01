@@ -1,5 +1,6 @@
 import org.sql2o.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Departments {
@@ -61,12 +62,23 @@ public class Departments {
                     .executeAndFetch(Users.class);
         }
     }
-    public List<News> getNews() {
+    public List<Object> getNews() {
+        List<Object> allNews = new ArrayList<Object>();
+
         try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM news where dName=:dName";
-            return con.createQuery(sql)
+            String sqlGeneral = "SELECT * FROM news where dName=:dName AND type='General';";
+            List<GeneralNews> generalNews = con.createQuery(sqlGeneral)
                     .addParameter("dName", this.dName)
-                    .executeAndFetch(News.class);
+                    .executeAndFetch(GeneralNews.class);
+            allNews.addAll(generalNews);
+
+            String sqlDept = "SELECT * FROM monsters news where dName=:dName AND type='Department';";
+            List<DepartmentNews> departmentNews = con.createQuery(sqlDept)
+                    .addParameter("dName", this.dName)
+                    .executeAndFetch(DepartmentNews.class);
+            allNews.addAll(departmentNews);
         }
+
+        return allNews;
     }
 }
