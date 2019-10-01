@@ -38,6 +38,28 @@ public class App {
             model.put("user", users);
             return new ModelAndView(model, "allUsers.hbs");
         }, new HandlebarsTemplateEngine());
-
+//      show new department form
+        get("/dept/new", (req,res)->{
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "newDept-form.hbs");
+        }, new HandlebarsTemplateEngine());
+//        post the department entered
+        post("/dept/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String dName = request.queryParams("dName");
+            String description = request.queryParams("description");
+            Integer employeeNo = Integer.parseInt(request.queryParams("employeeNo"));
+            Departments newDept = new Departments(dName,description,employeeNo);
+            model.put("department", newDept);
+            newDept.save();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+//        show all departments in the db
+        get("/allDepts", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Departments> departments = Departments.all();
+            model.put("departments", departments);
+            return new ModelAndView(model, "allDepts.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }

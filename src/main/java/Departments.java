@@ -72,7 +72,7 @@ public class Departments {
                     .executeAndFetch(GeneralNews.class);
             allNews.addAll(generalNews);
 
-            String sqlDept = "SELECT * FROM monsters news where dName=:dName AND type='Department';";
+            String sqlDept = "SELECT * FROM news news where dName=:dName AND type='Department';";
             List<DepartmentNews> departmentNews = con.createQuery(sqlDept)
                     .addParameter("dName", this.dName)
                     .executeAndFetch(DepartmentNews.class);
