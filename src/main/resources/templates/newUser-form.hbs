@@ -1,0 +1,25 @@
+{{#partial "content"}}
+    <h3>Add a new User!</h3>
+        <form action="/user/new" method="post">
+            <div class="form-group">
+                <label for="fName">First name:</label><br>
+                <input id="fName" name="fName" type="text"><br>
+            </div>
+            <div class="form-group">
+                <label for="sName">Second name:</label><br>
+                <input id="sName" name="sName" type="text"><br>
+            </div>
+            <div class="form-group">
+                <label for="position">Position:</label><br>
+                <input id="position" name="position" type="text"><br>
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label><br>
+                <input id="department" name="department" type="text"><br>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">ADD</button>
+            </div>
+        </form>
+{{/partial}}
+{{> layout.hbs}}
