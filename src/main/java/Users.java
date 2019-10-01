@@ -1,5 +1,7 @@
 import org.sql2o.*;
 
+import java.util.List;
+
 public class Users {
     private String fName;
     private String sName;
@@ -36,6 +38,12 @@ public class Users {
                     .addParameter("position", this.position)
                     .addParameter("department", this.department)
                     .executeUpdate();
+        }
+    }
+    public static List<Users> all() {
+        String sql = "SELECT * FROM users";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Users.class);
         }
     }
 }

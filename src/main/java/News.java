@@ -1,5 +1,7 @@
 import org.sql2o.*;
 
+import java.util.List;
+
 public class News {
     private String title;
     private String content;
@@ -29,6 +31,12 @@ public class News {
                     .addParameter("content", this.content)
                     .addParameter("dName", this.dName)
                     .executeUpdate();
+        }
+    }
+    public static List<News> all() {
+        String sql = "SELECT * FROM news";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(News.class);
         }
     }
 }
