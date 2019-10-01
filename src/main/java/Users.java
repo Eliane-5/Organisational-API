@@ -7,6 +7,7 @@ public class Users {
     private String sName;
     private String position;
     private String department;
+    private int id;
     public Users(String fName, String sName, String position, String department){
         this.fName = fName;
         this.sName = sName;
@@ -29,15 +30,20 @@ public class Users {
     public String getDepartment() {
         return department;
     }
+    public int getId() {
+        return id;
+    }
     public void save() {
         try(Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO users (fName, sName, position, department) VALUES (:fName, :sName, :position, :department)";
-            con.createQuery(sql)
+            this.id= (int) con.createQuery(sql)
                     .addParameter("fName", this.fName)
                     .addParameter("sName", this.sName)
                     .addParameter("position", this.position)
                     .addParameter("department", this.department)
-                    .executeUpdate();
+                    .executeUpdate()
+                    .getKey();
+
         }
     }
     public static List<Users> all() {
