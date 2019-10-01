@@ -44,4 +44,13 @@ public class Departments {
             return con.createQuery(sql).executeAndFetch(Departments.class);
         }
     }
+    public static Departments find(int id) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM departments where id=:id";
+             Departments department = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Departments.class);
+            return department;
+        }
+    }
 }

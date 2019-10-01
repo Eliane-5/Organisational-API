@@ -45,4 +45,13 @@ public class News {
             return con.createQuery(sql).executeAndFetch(News.class);
         }
     }
+    public static News find(int id) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM news where id=:id";
+            News news = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(News.class);
+            return news;
+        }
+    }
 }
