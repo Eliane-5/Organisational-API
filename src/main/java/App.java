@@ -17,6 +17,8 @@ public class App {
 //        create a new user form
         get("/user/new", (req,res)->{
             Map<String, Object> model = new HashMap<>();
+            List<Departments> departments = Departments.all();
+            model.put("departments", departments);
             return new ModelAndView(model, "newUser-form.hbs");
         }, new HandlebarsTemplateEngine());
 //      post the user entered
@@ -88,6 +90,8 @@ public class App {
 //        show form to enter dept related news.
         get("/deptNews/new", (req,res)->{
             Map<String, Object> model = new HashMap<>();
+            List<Departments> departments = Departments.all();
+            model.put("departments", departments);
             return new ModelAndView(model, "deptNews-form.hbs");
         }, new HandlebarsTemplateEngine());
 //        post the info got from form and save to db

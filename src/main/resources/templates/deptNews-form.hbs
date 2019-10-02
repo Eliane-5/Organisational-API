@@ -9,9 +9,17 @@
                    <label for="content">Post content:</label><br>
                    <textarea class="form-control" id="content" name="content" rows="4" type="text"></textarea><br>
                </div>
+{{!--                <div class="form-group"> --}}
+{{!--                    <label for="dName">Department name:</label><br> --}}
+{{!--                    <input class="form-control" id="dName" name="dName" type="text"><br><br> --}}
+{{!--                </div> --}}
                <div class="form-group">
-                   <label for="dName">Department name:</label><br>
-                   <input class="form-control" id="dName" name="dName" type="text"><br><br>
+                    <label for="dName">Department name:</label><br>
+                    <select class="form-control" name="dName">
+                        {{#each departments}}
+                            <option>{{dName}}</option>
+                        {{/each}}
+                    </select>
                </div>
                <div class="form-group">
                    <button type="submit" class="btn btn-default">POST</button>

@@ -3,19 +3,23 @@
         <form action="/user/new" method="post">
             <div class="form-group">
                 <label for="fName">First name:</label><br>
-                <input id="fName" name="fName" type="text"><br>
+                <input class="form-control" id="fName" name="fName" type="text"><br>
             </div>
             <div class="form-group">
                 <label for="sName">Second name:</label><br>
-                <input id="sName" name="sName" type="text"><br>
+                <input class="form-control" id="sName" name="sName" type="text"><br>
             </div>
             <div class="form-group">
                 <label for="position">Position:</label><br>
-                <input id="position" name="position" type="text"><br>
+                <input class="form-control" id="position" name="position" type="text"><br>
             </div>
             <div class="form-group">
-                <label for="department">Department:</label><br>
-                <input id="department" name="department" type="text"><br>
+                <label for="department">Department name:</label><br>
+                <select class="form-control" name="department">
+                    {{#each departments}}
+                        <option>{{dName}}</option>
+                    {{/each}}
+                </select>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default">ADD</button>

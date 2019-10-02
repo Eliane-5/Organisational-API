@@ -1,0 +1,52 @@
+{{#partial "content"}}
+    <div>
+        <a id="button" style="background-color:black;color:white;" href="/user/new" class="btn btn-secondary btn-lg" role="button">ADD USER</a><br><br><br>
+    </div>
+    <div class="container">
+        <div>
+            {{#if user}}
+                <h3 style="text-decoration:underline;">ALL USERS</h3>
+                {{#each user }}
+                    <table align="center" style="text-align:center;">
+                        <tr>
+                            <th id="header">First Name</th>
+                            <th id="header">Second Name</th>
+                            <th id="header">Position</th>
+                            <th id="header">Department</th>
+                        </tr>
+                        <tr>
+                            <td id="data"><strong>{{ fName }} </strong></td>
+                            <td id="data">{{ sName }} </td>
+                            <td id="data">{{ position }}</td>
+                            <td id="data">{{ department }}</td>
+                       </tr>
+                    </table>
+                {{/each}}
+            {{else}}
+                <h1>No users registered yet!</h4>
+            {{/if}}
+        </div>
+    </div>
+{{/partial}}
+<style>
+    table,th#header,td#data {
+            border: 1px solid black;
+            border-collapse:collapse;
+        }
+        th#header, td#data {
+            padding: 15px;
+            border-left: 1px solid black;
+        }
+        th#header {
+            text-align: left;
+        }
+        table {
+            border-spacing: 5%;
+            margin-bottom:3%;
+            text-align:center;
+        }
+        body{
+            text-align:center;
+        }
+</style>
+{{> layout.hbs}}
