@@ -36,7 +36,7 @@ public class Users {
     public void save() {
         try(Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO users (fName, sName, position, department) VALUES (:fName, :sName, :position, :department)";
-            this.id= (int) con.createQuery(sql)
+            this.id= (int) con.createQuery(sql, true)
                     .addParameter("fName", this.fName)
                     .addParameter("sName", this.sName)
                     .addParameter("position", this.position)

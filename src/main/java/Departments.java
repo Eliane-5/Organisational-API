@@ -31,7 +31,7 @@ public class Departments {
     public void save() {
         try(Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO departments (dName, description, employeeNo) VALUES (:dName, :description, :employeeNo)";
-            this.id = (int) con.createQuery(sql)
+            this.id = (int) con.createQuery(sql, true)
                     .addParameter("dName", this.dName)
                     .addParameter("description", this.description)
                     .addParameter("employeeNo", this.employeeNo)
