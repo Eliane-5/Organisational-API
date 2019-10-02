@@ -1,0 +1,29 @@
+{{#partial "content"}}
+    {{#if departments}}
+        <h2>DEPARTMENTS</h2>
+        <div id="all">
+        {{#each departments }}
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{ dName }}</div>
+                <div class="card-body">
+                    <h5 style="text-decoration:underline;" class="card-title">About</h5>
+                    <p class="card-text">{{ description }} .</p>
+                    <p class="card-text">Number of Employees: {{ employeeNo }}</p>
+                    <p class="card-text"><small class="text-muted"><a href="">view Users</a></small></p>
+                    <p class="card-text"><small class="text-muted"><a href="">view Posts</a></small></p>
+                </div>
+            </div>
+        {{/each}}
+        {{else}}
+            <h1>No Departments registered yet!</h4>
+    </div>
+    {{/if}}
+{{/partial}}
+<style>
+    #all{
+        display:flex;
+        flex-direction:wrap;
+        justify-content:space-around;
+    }
+</style>
+{{> layout.hbs}}
