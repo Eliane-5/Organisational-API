@@ -1,0 +1,50 @@
+{{#partial "content"}}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <a id="button" style="background-color:black;color:white;" href="/generalNews/new" class="btn btn-secondary btn-lg" role="button">Post General company news</a><br><br><br>
+        </div>
+        <div class="col-md-6">
+            <a id="button" style="background-color:black;color:white;" href="/deptNews/new" class="btn btn-secondary btn-lg" role="button">Post Individual department news</a><br><br>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+            <div class="row">
+            <h2 style="text-align:center;">ALL COMPANY NEWS</h2>
+                <div class="col-md-6">
+                    {{#if generalNews}}
+                        <h3 style="text-decoration:underline;">GENERAL NEWS</h3>
+                        {{#each generalNews }}
+                            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">{{ dName }}</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ title }}</h5>
+                                    <p class="card-text">{{ content }}</p>
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{else}}
+                        <h1>No general news posted yet!</h4>
+                    {{/if}}
+                </div>
+                <div class="col-md-6">
+                    {{#if departmentNews}}
+                        <h3 style="text-decoration:underline;">DEPARTMENT NEWS!</h3>
+                        {{#each departmentNews }}
+                            <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                                <div class="card-header">{{ dName }}</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ title }}</h5>
+                                    <p class="card-text">{{ content }}</p>
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{else}}
+                        <h1>No department news posted yet!</h1>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+{{/partial}}
+{{> layout.hbs}}

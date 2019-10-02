@@ -1,0 +1,17 @@
+{{#partial "content"}}
+    <h3>General news!</h3>
+        <form action="/generalNews/new" method="post">
+            <div class="form-group">
+                <label for="title">Post title:</label><br>
+                <input class="form-control" id="title" name="title" type="text"><br>
+            </div>
+            <div class="form-group">
+                <label for="content">Post content:</label><br>
+                <textarea class="form-control" id="content" name="content" rows="3" type="text"></textarea><br>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">POST</button>
+            </div>
+        </form>
+{{/partial}}
+{{> layout.hbs}}
