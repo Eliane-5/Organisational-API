@@ -10,10 +10,10 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args){
 //      Making a home pathway
-        get("/",(request, response) ->{
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine() );
+//        get("/",(request, response) ->{
+//            Map<String, Object> model = new HashMap<>();
+//            return new ModelAndView(model, "news.hbs");
+//        }, new HandlebarsTemplateEngine() );
 //        create a new user form
         get("/user/new", (req,res)->{
             Map<String, Object> model = new HashMap<>();
@@ -79,7 +79,7 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 //        show all news
-        get("/allNews", (req, res) -> {
+        get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<GeneralNews> generalNews = GeneralNews.all();
             List<DepartmentNews> departmentNews = DepartmentNews.all();
@@ -105,5 +105,14 @@ public class App {
             departmentNews.save();
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //      show all users in individual department
+//        get("/allUsersDept", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            List<Users> userInDept = Departments.getUsers();
+//            model.put("userInDept", userInDept);
+//            return new ModelAndView(model, "allUsersDept.hbs");
+//
+//        }, new HandlebarsTemplateEngine());
     }
 }
